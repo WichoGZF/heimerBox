@@ -47,7 +47,7 @@ const minionsButtonEl = document.querySelector<HTMLElement>('#minions')!;
 const minionsContainerEl = document.querySelector<HTMLElement>('#minions-list')!;
 const minionsButtonImgEl: HTMLImageElement = document.querySelector<HTMLImageElement>('#minions-button__image')!;
 
-minionsContainerEl.appendChild(sidebarGetChildren(minionsArray, 'sidebar__champion-container__champion'));
+minionsContainerEl.appendChild(sidebarGetChildren(minionsArray, 'sidebar__champion-container__minion '));
 
 
 minionsButtonEl.addEventListener('click', minionsButtonHandler)
@@ -57,7 +57,7 @@ const neutralsButtonEl = document.querySelector<HTMLElement>('#neutrals')!;
 const neutralsContainerEl = document.querySelector<HTMLElement>('#neutrals-list')!;
 const neutralsButtonImgEl: HTMLImageElement = document.querySelector<HTMLImageElement>('#neutrals-button__image')!;
 
-neutralsContainerEl.appendChild(sidebarGetChildren(neutralsArray, 'sidebar__champion-container__champion'));
+neutralsContainerEl.appendChild(sidebarGetChildren(neutralsArray, 'sidebar__champion-container__neutral'));
 
 neutralsButtonEl.addEventListener('click', neutralsButtonHandler)
 //For side bar open and close
