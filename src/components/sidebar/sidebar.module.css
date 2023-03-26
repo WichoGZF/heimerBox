@@ -1,0 +1,148 @@
+.sidebar {
+    background-color: rgb(34, 34, 39);
+    flex: 0 0 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    padding-bottom: 1rem;
+}
+
+.search {
+    border: none;
+    flex: 1 1 auto;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.searchButton {
+    border: none;
+    cursor: pointer;
+    background-color: var(--md-sys-color-primary-container-dark);
+    width: 30px;
+    height: 30px;
+    background-image: url('../../assets/search.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.entityMenu {
+    flex: 1 1 max-content;
+    min-height: 0;
+    overflow-y: scroll;     
+}
+
+.open {
+    all: unset;
+    cursor: pointer;
+    flex: 0 0 content;
+    gap: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--md-sys-color-primary-container-dark);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+.open:hover {
+    background-color: rgba(22, 44, 132, 0.767);
+}
+
+.container {
+    display: flex;
+    place-content: center;
+    gap: .5rem;
+}
+
+
+.color {
+    flex: 0 0 50px;
+    height: 50px;
+
+
+}
+
+.draw {
+    background-image: url("../../assets/pencil.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+}
+
+.eraser {
+    background-image: url("../../assets/eraser.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+}
+
+
+.erase {
+    all: unset;
+    cursor: pointer;
+    flex: 0 0 50px;
+    height: 50px;
+    background-image: url('../../assets/trash.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+
+}
+
+.erase:hover {
+    background-color: gray;
+}
+
+.erase:active { 
+    background-color: lightgray;
+}
+
+.capture {
+    all: unset;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-image: url('../../assets/capture.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+
+.capture:hover {
+    background-color: gray;
+}
+
+.capture:active {
+    background-color: lightgray;
+}
+
+.actionColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.itemContainer{ 
+    display: none; 
+    flex-wrap: wrap;
+}
