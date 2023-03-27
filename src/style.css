@@ -115,4 +115,18 @@ input[type="color"]::-webkit-color-swatch {
   width: 30px; 
   height: 30px; 
   border-radius: 50%;
+  background-size: contain;
+}
+
+.sidebar__champion-container__minion{ 
+  width: 30px; 
+  height: 30px; 
+  background-size: contain;
+}
+
+.sidebar__champion-container__neutral{ 
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%;
+  background-size: contain;
 }

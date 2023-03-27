@@ -4,10 +4,13 @@ import caretdownSvg from '../../assets/caretdown.svg'
 let sidebar: string = `
     <aside class=${classes.sidebar}>
     <div class="${classes.column} ${classes.entityMenu}">
-        <form class="${classes.form}">
-            <input type="search" placeholder="Search..." class="${classes.search}"/>
-            <button type="submit" class="${classes.searchButton}"/>
+        <div>
+        <form class="${classes.form}" id="search-form">
+            <input type="search" placeholder="Search..." class=${classes.search} id="search-input"/>
+            <button type="submit" class="${classes.searchButton}" id="search-button"/>
         </form>
+        </div>
+        <div id='search-result' class=${classes.itemContainer}></div>
         <button class="${classes.open}" id="champions">
             <img src=${caretdownSvg} alt="" id="champions-button__image"/>
             <p>Champions</p>
@@ -27,18 +30,18 @@ let sidebar: string = `
     <div class=${classes.actionColumn}>
         <div class=${classes.container}>
             <div class=${classes.container}>
-                <input type="checkbox" class="${classes.draw} sidebar__checkbox"/>
+                <input type="checkbox" id='pencil-checkbox' class="${classes.draw} sidebar__checkbox"/>
                 <label for="draw" class="sidebar__checkbox__label"/>
             </div>
             <div class=${classes.container}>
-                <input type="checkbox" class="${classes.eraser} sidebar__checkbox"/>
+                <input type="checkbox" id='erase-checkbox' class="${classes.eraser} sidebar__checkbox"/>
                 <label for="eraser" class='sidebar__checkbox__label'/>
             </div>
-                <input type="color" class=${classes.color} />
-                <button class=${classes.erase}>
+                <input type="color" id='color-input' class=${classes.color} />
+                <button id='erase-button' class=${classes.erase}>
             </button>
         </div>
-        <button class=${classes.capture}>
+        <button id='screenshot-button' class=${classes.capture}>
         </button>
     </div>
 </aside>

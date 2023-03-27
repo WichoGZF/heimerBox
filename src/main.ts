@@ -31,7 +31,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </p>
   </footer>
 `
-//Sidebar
+
 //Setting up player list. 
 let championsOpen: boolean = false;
 const championsButtonEl = document.querySelector<HTMLElement>('#champions')!;
@@ -47,7 +47,7 @@ const minionsButtonEl = document.querySelector<HTMLElement>('#minions')!;
 const minionsContainerEl = document.querySelector<HTMLElement>('#minions-list')!;
 const minionsButtonImgEl: HTMLImageElement = document.querySelector<HTMLImageElement>('#minions-button__image')!;
 
-minionsContainerEl.appendChild(sidebarGetChildren(minionsArray, 'sidebar__champion-container__minion '));
+minionsContainerEl.appendChild(sidebarGetChildren(minionsArray, 'sidebar__champion-container__minion'));
 
 
 minionsButtonEl.addEventListener('click', minionsButtonHandler)
@@ -62,6 +62,41 @@ neutralsContainerEl.appendChild(sidebarGetChildren(neutralsArray, 'sidebar__cham
 neutralsButtonEl.addEventListener('click', neutralsButtonHandler)
 //For side bar open and close
 
+const searchFormEl = document.querySelector<HTMLFormElement>('#search-form'); 
+const searchInputEl = document.querySelector<HTMLInputElement>('#search-input')!;
+const searchResultContainerEl = document.querySelector<HTMLElement>('#search-result')!;
+
+searchFormEl?.addEventListener('submit', (e: Event) => {
+  e.preventDefault(); 
+  const searchText = searchInputEl.value; 
+  if(searchText.length){
+    searchResultContainerEl.replaceChildren(searchForEl(searchText));
+    searchResultContainerEl.style.display = 'flex'
+  }
+})
+
+let drawOn:boolean = false; 
+document.querySelector<HTMLInputElement>('#pencil-checkbox')!.addEventListener('click', (e: MouseEvent) => {
+  drawOn = !drawOn
+})
+
+let eraseOn:boolean = false; 
+document.querySelector<HTMLInputElement>('#erase-checkbox')!.addEventListener('click', (e: MouseEvent) => {
+  eraseOn = !eraseOn
+})
+
+let drawColor:string = '#00000'; 
+document.querySelector<HTMLInputElement>('#color-input')!.addEventListener('change', (e: MouseEvent) => {
+  drawColor = e.target.value; 
+}); 
+
+document.querySelector<HTMLButtonElement>('#erase-button')!.addEventListener('click', (e: MouseEvent) => {
+  //Erase all draw canva
+})
+
+document.querySelector<HTMLButtonElement>('#screenshot-button')!.addEventListener('click', (e: MouseEvent) => {
+  //Take screenshot
+}); 
 
 //Function that appends divs with the specified background image array made into a function for 
 //reusability. 
@@ -71,6 +106,7 @@ function sidebarGetChildren(imageArray: any[], classlist: string) {
     const newDiv = document.createElement('div');
     newDiv.classList.add(classlist);
     newDiv.style.backgroundImage = `url(${image.path})`
+    newDiv.dataset.name = image.name;
     tempFragment.appendChild(newDiv)
   });
   return tempFragment
@@ -97,7 +133,7 @@ function minionsButtonHandler(e: MouseEvent) {
   }
   else {
     minionsOpen = true;
-    minionsContainerEl.style.display = 'none  '
+    minionsContainerEl.style.display = 'none'
     minionsButtonImgEl.src = caretdownSvg
 
   }
@@ -114,4 +150,27 @@ function neutralsButtonHandler(e: MouseEvent) {
     neutralsContainerEl.style.display = 'none'
     neutralsButtonImgEl.src = caretdownSvg;
   }
+}
+//Seach for returns an arrray of the found elements given the arg string.
+function searchForEl(search: string) { 
+  let searchResult = new DocumentFragment(); 
+  Array.from(championsContainerEl.children).forEach((el, index) => {
+    const elementName = el.dataset.name
+    if(elementName.toLowerCase().includes(search.toLowerCase())){
+      searchResult.appendChild(el.cloneNode(true))
+    }
+  })
+    Array.from(minionsContainerEl.children).forEach((el, index) => {
+    const elementName = el.dataset.name
+    if(elementName.toLowerCase().includes(search.toLowerCase())){
+      searchResult.appendChild(el.cloneNode(true))
+    }
+  })
+  Array.from(neutralsContainerEl.children).forEach((el, index) => {
+    const elementName = el.dataset.name
+    if(elementName.toLowerCase().includes(search.toLowerCase())){
+      searchResult.appendChild(el.cloneNode(true))
+    }
+  })
+  return searchResult;
 }
